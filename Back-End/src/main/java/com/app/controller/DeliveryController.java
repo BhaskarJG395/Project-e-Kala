@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/delivery")
+@CrossOrigin(origins="http://localhost:3000")
 public class DeliveryController {
 	@Autowired
 	DeliveryServices deliveryService;

@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/payments")
+@CrossOrigin(origins="http://localhost:3000")
 public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;

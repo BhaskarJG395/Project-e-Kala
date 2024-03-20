@@ -22,6 +22,7 @@ import com.app.services.AddressService;
 
 @RestController
 @RequestMapping
+@CrossOrigin(origins="http://localhost:3000")
 public class AddressController {
 	
 	@Autowired
