@@ -22,7 +22,7 @@ public class UserController {
 	@Autowired
 	UserService userservice;
 	
-	@PostMapping
+	@PostMapping("/add")
 	public ResponseEntity<?> addNewUser(@RequestBody UserDto userdto){
 		return ResponseEntity.ok(userservice.addUser(userdto));
 	}
@@ -32,7 +32,7 @@ public class UserController {
 		return ResponseEntity.ok(userservice.getAllUsers());
 	}
 	
-	@DeleteMapping("/{userId}")
+	@DeleteMapping("/delete/{userId}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long userId){
 		try {
 			return ResponseEntity.ok(userservice.deleteUser(userId));
@@ -41,7 +41,7 @@ public class UserController {
 		}
 	}
 	
-	@PutMapping("/{userId}")
+	@PutMapping("/update/{userId}")
 	public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody UserDto userdto){
 		try {
 			return ResponseEntity.ok(userservice.updateUser(userId, userdto));
