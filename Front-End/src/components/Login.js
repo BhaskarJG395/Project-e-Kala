@@ -5,7 +5,7 @@ import { useLogin } from './LoginContext';
 
 export default function Login() {
   const navigate = useNavigate(); // Corrected usage
-  const { isLoggedIn, login, logout } = useLogin(); // now we are using Context for login
+  const { isLoggedIn, login, logout ,userType,typeUser,typeArtist} = useLogin(); // now we are using Context for login
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [selectedRole, setSelectedRole] = useState('');
@@ -25,11 +25,13 @@ export default function Login() {
           // Redirect or perform further actions here
           if(selectedRole === "artist"){
             login(); //call login function from loginContext.js
+            typeArtist();
             console.log("logged in as artist");
             navigate("/admin");
           }
           if(selectedRole === "user"){
             login(); //call login function from loginContext.js
+            typeUser();
             console.log("logged in as user");
             navigate("/");
           }

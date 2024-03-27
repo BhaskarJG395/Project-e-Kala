@@ -3,6 +3,7 @@ package com.app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.UserDto;
 import com.app.services.UserService;
-
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins="http://localhost:3000")
 public class UserController {
 	@Autowired
 	UserService userservice;
@@ -32,7 +32,7 @@ public class UserController {
 		return ResponseEntity.ok(userservice.getAllUsers());
 	}
 	
-	@DeleteMapping("/delete/{userId}")
+	@DeleteMapping("/{userId}")
 	public ResponseEntity<?> deleteUser(@PathVariable Long userId){
 		try {
 			return ResponseEntity.ok(userservice.deleteUser(userId));
@@ -41,7 +41,7 @@ public class UserController {
 		}
 	}
 	
-	@PutMapping("/update/{userId}")
+	@PutMapping("/{userId}")
 	public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody UserDto userdto){
 		try {
 			return ResponseEntity.ok(userservice.updateUser(userId, userdto));

@@ -21,8 +21,7 @@ import com.app.entities.User;
 import com.app.services.AddressService;
 
 @RestController
-@RequestMapping("/addresses")
-@CrossOrigin(origins="http://localhost:3000")
+@RequestMapping
 public class AddressController {
 	
 	@Autowired
@@ -39,7 +38,7 @@ public class AddressController {
 		return ResponseEntity.ok(list);
 	}
 	
-	@PostMapping("/add/{userId}")
+	@PostMapping("/{userId}")
 	public ResponseEntity<?> addAddress(@PathVariable Long userId, @RequestBody AddressReqDto addressdto){
 		return ResponseEntity.ok(addService.addAddress(userId,addressdto));
 	}
@@ -53,7 +52,7 @@ public class AddressController {
 		
 		return ResponseEntity.ok(address);
 	}
-	@PutMapping("/update/{userId}")
+	@PutMapping("/{userId}")
 	public ResponseEntity<?> UpdateAddress(@PathVariable Long userId,@RequestBody AddressReqDto dto){
 	//	AddressReqDto address=addService.addAddress(userId,dto);
 		//if(address==null)

@@ -7,13 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 export default function NavigationBar(){
-    const { isLoggedIn, login, logout } = useLogin(); // now we are using Context for login
+    const { isLoggedIn, login, logout,userType,typeUser,typeArtist,typeEmpty } = useLogin(); // now we are using Context for login
     
     const handleLogout = () => {
         // Call logout function
         let result = window.confirm("are you sure !! You want to Logged out ?");
         if(result){
             logout();
+            typeEmpty();
         }
       };
 
@@ -31,8 +32,9 @@ export default function NavigationBar(){
                     <div className="navbar-nav">
                         <NavLink className="nav-link active mx-2 text-light" aria-current="page" to="">Home</NavLink>
                         <NavLink className="nav-link text-light" to="/arts">All arts</NavLink>
-                        {/* <NavLink className="nav-link text-light" to="/feedback">Feedback</NavLink> */}
-
+                        {
+                            isLoggedIn ? ( <NavLink className="nav-link text-light" to="/">Orders</NavLink>) : (<></>)
+                        }
                     </div>
                 </div>
             </div>
@@ -47,7 +49,9 @@ export default function NavigationBar(){
                 (<NavLink className="nav-link" to="/"><button onClick={handleLogout} className='btn btn-danger'>Logout</button></NavLink> ) : 
                 (<NavLink className="nav-link" to="/login"><button className='btn btn-success'>Login</button></NavLink>)
             }
-            <NavLink className="nav-link text-light" to="/cart">(3)<FontAwesomeIcon icon={faShoppingCart} /></NavLink>
+            {
+                userType=="artist"?(<></>):(<NavLink className="nav-link text-light" to="/cart">(3)<FontAwesomeIcon icon={faShoppingCart} /></NavLink>)
+            }
           </nav>
           {/* Navigation bar ends here  */}
         </div>
