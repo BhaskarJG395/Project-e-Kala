@@ -5,4 +5,5 @@ class PaymentService{
         return axios.get('/payments');
     }
 }
+
 export default new PaymentService();

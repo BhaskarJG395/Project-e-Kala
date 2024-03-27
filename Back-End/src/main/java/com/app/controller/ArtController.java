@@ -44,12 +44,12 @@ public class ArtController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(artImageService.upLoadImage(artId, imageFile));
 	}
 	
-	@DeleteMapping("/{artId}")
+	@DeleteMapping("/delete/{artId}")
 	public ResponseEntity<?> deleteArt(@PathVariable Long artId){
 		return ResponseEntity.ok(artService.deleteArt(artId));
 	}
 	
-	@PutMapping("/{artId}")
+	@PutMapping("/update/{artId}")
 	public ResponseEntity<?> updateArt(@PathVariable Long artId,@RequestBody ArtReqDto artDto){
 		return ResponseEntity.status(HttpStatus.OK).body(artService.updateArt(artId, artDto));
 	}

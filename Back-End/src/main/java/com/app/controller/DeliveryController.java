@@ -35,7 +35,7 @@ public class DeliveryController {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("user not found..!");
 	}
 	
-	@PostMapping("/{userId}")
+	@PostMapping("/add/{userId}")
 	public ResponseEntity<?> postDelivery(@PathVariable Long userId, @RequestBody DeliveryReqDto dto){
 		return ResponseEntity.ok(deliveryService.issueDelivery(userId, dto));
 	}

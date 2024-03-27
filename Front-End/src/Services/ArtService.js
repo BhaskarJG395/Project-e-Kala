@@ -7,7 +7,7 @@ class ArtService{
     }
 
     deleteArt(id){
-        return axios.delete("/Art/"+id)
+        return axios.delete("/Art/delete/"+id)
     }
 }
 

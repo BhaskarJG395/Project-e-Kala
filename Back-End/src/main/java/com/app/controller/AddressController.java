@@ -21,7 +21,7 @@ import com.app.entities.User;
 import com.app.services.AddressService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/addresses")
 public class AddressController {
 	
 	@Autowired
@@ -38,7 +38,7 @@ public class AddressController {
 		return ResponseEntity.ok(list);
 	}
 	
-	@PostMapping("/{userId}")
+	@PostMapping("/add/{userId}")
 	public ResponseEntity<?> addAddress(@PathVariable Long userId, @RequestBody AddressReqDto addressdto){
 		return ResponseEntity.ok(addService.addAddress(userId,addressdto));
 	}
@@ -52,12 +52,11 @@ public class AddressController {
 		
 		return ResponseEntity.ok(address);
 	}
-	@PutMapping("/{userId}")
+	@PutMapping("/update/{userId}")
 	public ResponseEntity<?> UpdateAddress(@PathVariable Long userId,@RequestBody AddressReqDto dto){
 	//	AddressReqDto address=addService.addAddress(userId,dto);
 		//if(address==null)
 		//	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No address found..!");
 		return ResponseEntity.ok(addService.updateAddress(userId, dto));			
 	}
-	
 }
